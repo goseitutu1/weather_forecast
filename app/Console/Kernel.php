@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\WeatherForecast;
+use App\Jobs\WeatherForecastJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +18,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // scheduled WeatherForecastJob to run 4 times daily
+        $schedule->job(WeatherForecastJob::class)->everySixHours();
     }
 
     /**

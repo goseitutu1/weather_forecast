@@ -51,6 +51,19 @@ return [
     */
 
     'channels' => [
+
+        'weather_job' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/weather_job.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'weather_api' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/weather_api.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
@@ -112,6 +125,8 @@ return [
         'null' => [
             'driver' => 'monolog',
             'handler' => NullHandler::class,
+            'path' => storage_path('logs/weather.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'emergency' => [
